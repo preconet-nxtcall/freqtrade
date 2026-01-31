@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: freqtrade
+    runtime: docker
+    plan: free
+    region: oregon
+    envVars:
+      - key: WEB_USERNAME
+        value: freqtrader
+      - key: WEB_PASSWORD
+        generateValue: true
+      - key: PORT
+        value: 8080
+    disk:
+      name: freqtrade-data
+      mountPath: /freqtrade/user_data
+      sizeGB: 1
+    # Use bash explicitly to avoid permission issues
+    dockerCommand: bash ./scripts/start_render.sh
