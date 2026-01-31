@@ -68,6 +68,15 @@ except Exception as e:
     exit(1)
 "
 
+# Ensure strategies directory exists
+mkdir -p /freqtrade/user_data/strategies
+
+# Copy SampleStrategy from root if it doesn't exist in user_data
+if [ ! -f "/freqtrade/user_data/strategies/SampleStrategy.py" ] && [ -f "/freqtrade/SampleStrategy.py" ]; then
+    echo "Copying SampleStrategy to user_data..."
+    cp "/freqtrade/SampleStrategy.py" "/freqtrade/user_data/strategies/SampleStrategy.py"
+fi
+
 # Start Freqtrade
 echo "Starting Freqtrade..."
-exec freqtrade trade --config "$CONFIG_FILE" --db-url sqlite:////freqtrade/user_data/tradesv3.sqlite
+exec freqtrade trade --config "$CONFIG_FILE" --strategy SampleStrategy --db-url sqlite:////freqtrade/user_data/tradesv3.sqlite
