@@ -70,4 +70,4 @@ except Exception as e:
 
 # Start Freqtrade
 echo "Starting Freqtrade..."
-exec freqtrade trade --config "$CONFIG_FILE"
+exec freqtrade trade --config "$CONFIG_FILE" --db-url sqlite:////freqtrade/user_data/tradesv3.sqlite
