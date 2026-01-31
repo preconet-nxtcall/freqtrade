@@ -7,7 +7,7 @@ mkdir -p /freqtrade/user_data
 
 # Destination config path
 CONFIG_FILE="/freqtrade/user_data/config.json"
-SOURCE_CONFIG="/freqtrade/config.json"
+SOURCE_CONFIG="/freqtrade/config_render.json"
 
 echo "Checking for config file at $CONFIG_FILE..."
 
